@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum CloudAltitude {
-    case low, mid, high
+enum CloudAltitude: Int {
+    case low = 0, mid, high, count
 }
 
 class Cloud {
