@@ -91,7 +91,6 @@ class Cloud {
                                 precipitationFlog: false,
                                 description: "ripped shreads thin cotton gauze")
         clouds.append(cloud0)
-
         
         return clouds
     }
