@@ -65,5 +65,11 @@ extension ViewController {
         
         return cell
     }
+    
+    // MARK:- Navigation
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowDetail", sender: nil)
+    }
 }
 
