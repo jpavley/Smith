@@ -14,6 +14,7 @@
 		B813C7842217938700A4CBA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B813C7822217938700A4CBA9 /* LaunchScreen.storyboard */; };
 		B813C78F2217938800A4CBA9 /* SmithTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813C78E2217938800A4CBA9 /* SmithTests.swift */; };
 		B8168880221CCF9700ED4533 /* CloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B816887F221CCF9700ED4533 /* CloudModel.swift */; };
+		B81688822220300300ED4533 /* CloudDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81688812220300300ED4533 /* CloudDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		B813C78E2217938800A4CBA9 /* SmithTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmithTests.swift; sourceTree = "<group>"; };
 		B813C7902217938800A4CBA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B816887F221CCF9700ED4533 /* CloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudModel.swift; sourceTree = "<group>"; };
+		B81688812220300300ED4533 /* CloudDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				B813C7822217938700A4CBA9 /* LaunchScreen.storyboard */,
 				B813C7852217938700A4CBA9 /* Info.plist */,
 				B816887F221CCF9700ED4533 /* CloudModel.swift */,
+				B81688812220300300ED4533 /* CloudDetailViewController.swift */,
 			);
 			path = Smith;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				B813C77C2217938600A4CBA9 /* ViewController.swift in Sources */,
 				B8168880221CCF9700ED4533 /* CloudModel.swift in Sources */,
 				B813C77A2217938600A4CBA9 /* AppDelegate.swift in Sources */,
+				B81688822220300300ED4533 /* CloudDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
