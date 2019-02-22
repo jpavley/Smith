@@ -12,9 +12,7 @@ class CloudDetailViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
 
     }
-
-
 }
