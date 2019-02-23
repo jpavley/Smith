@@ -26,7 +26,7 @@ class Cloud {
                                abbreviation: "Cb",
                                altitudeRange: [.low, .mid, .high],
                                precipitationFlog: true,
-                               description: "Verical sack of fluffy cotton balls with a dark bottom.")
+                               description: "Vertical sack of fluffy cotton balls with a dark bottom.")
         clouds.append(cloud1)
         
         let cloud2 = cloudMaker(name: "Cumulus",

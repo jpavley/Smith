@@ -66,6 +66,35 @@ extension ViewController {
         return cell
     }
     
+    // MARK:- Section Headers
+    
+    func findAltitudeFor(section: Int) -> String {
+        switch section {
+        case 0:
+            return "Low Clouds (6,500 ft)"
+        case 1:
+            return "Medium Clouds (23,000 ft)"
+        case 2:
+            return "High Clouds (40,000 ft)"
+        default:
+            return ""
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2")
+        let sectionLabel = cell?.viewWithTag(1000) as! UILabel
+        sectionLabel.text = findAltitudeFor(section: section)
+
+        return cell
+
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
     // MARK:- Navigation
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

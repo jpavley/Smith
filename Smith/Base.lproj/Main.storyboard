@@ -35,6 +35,28 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell2" id="8SQ-nj-JtU">
+                                <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8SQ-nj-JtU" id="Osy-xi-spI">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLz-Mt-gN9">
+                                            <rect key="frame" x="16" y="12" width="288" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oLz-Mt-gN9" firstAttribute="leading" secondItem="Osy-xi-spI" secondAttribute="leading" constant="16" id="BvT-Bm-Y5N"/>
+                                        <constraint firstAttribute="trailing" secondItem="oLz-Mt-gN9" secondAttribute="trailing" constant="16" id="I44-ze-Kvh"/>
+                                        <constraint firstItem="oLz-Mt-gN9" firstAttribute="top" secondItem="Osy-xi-spI" secondAttribute="top" constant="12" id="vhF-TJ-wPA"/>
+                                        <constraint firstAttribute="bottom" secondItem="oLz-Mt-gN9" secondAttribute="bottom" constant="10.5" id="x1c-12-Rzf"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="uB7-is-zYs" id="Uf2-Q3-Pxr"/>
