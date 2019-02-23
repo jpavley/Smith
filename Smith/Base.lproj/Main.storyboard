@@ -61,7 +61,7 @@
                         <sections>
                             <tableViewSection id="p2e-6n-jjB">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="tfb-VH-CQV" detailTextLabel="Rjd-yT-W9E" style="IBUITableViewCellStyleValue1" id="Mkr-H6-nlW">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="tfb-VH-CQV" detailTextLabel="Rjd-yT-W9E" style="IBUITableViewCellStyleValue1" id="Mkr-H6-nlW">
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mkr-H6-nlW" id="wiA-tg-74m">
@@ -85,7 +85,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Ly1-Sl-AyI" detailTextLabel="Vxp-8N-RFo" style="IBUITableViewCellStyleValue1" id="2i2-qB-FWM">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Ly1-Sl-AyI" detailTextLabel="Vxp-8N-RFo" style="IBUITableViewCellStyleValue1" id="2i2-qB-FWM">
                                         <rect key="frame" x="0.0" y="79" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2i2-qB-FWM" id="yOw-qh-bL5">
@@ -113,7 +113,7 @@
                             </tableViewSection>
                             <tableViewSection id="sDG-YE-7Zk">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="0Jz-cP-66y" detailTextLabel="RBP-EM-8lz" style="IBUITableViewCellStyleValue1" id="hMz-QV-bl8">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="0Jz-cP-66y" detailTextLabel="RBP-EM-8lz" style="IBUITableViewCellStyleValue1" id="hMz-QV-bl8">
                                         <rect key="frame" x="0.0" y="159" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hMz-QV-bl8" id="GKj-t4-u0F">
@@ -137,7 +137,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="vVA-hN-BCG" detailTextLabel="JXY-ca-qSd" style="IBUITableViewCellStyleValue1" id="za2-bj-0Ti">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="vVA-hN-BCG" detailTextLabel="JXY-ca-qSd" style="IBUITableViewCellStyleValue1" id="za2-bj-0Ti">
                                         <rect key="frame" x="0.0" y="203" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="za2-bj-0Ti" id="Ho8-Sj-3KE">
@@ -165,7 +165,7 @@
                             </tableViewSection>
                             <tableViewSection id="ATO-0K-dCw">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="gHu-E7-wS5">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="gHu-E7-wS5">
                                         <rect key="frame" x="0.0" y="283" width="320" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gHu-E7-wS5" id="38k-0a-LT6">
@@ -195,6 +195,13 @@
                             <outlet property="delegate" destination="M2h-f3-KUC" id="R7B-fw-bGI"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="abbreviationLabel" destination="Vxp-8N-RFo" id="saY-XH-yIi"/>
+                        <outlet property="altitudeLabel" destination="RBP-EM-8lz" id="iPD-eO-OP9"/>
+                        <outlet property="descriptionTextView" destination="nyt-ZU-Ulu" id="fFS-xP-Bq6"/>
+                        <outlet property="nameLabel" destination="Rjd-yT-W9E" id="GzG-DP-El3"/>
+                        <outlet property="precipitationLabel" destination="JXY-ca-qSd" id="Nkf-rp-eaR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKc-yf-l33" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -26,70 +26,70 @@ class Cloud {
                                abbreviation: "Cb",
                                altitudeRange: [.low, .mid, .high],
                                precipitationFlog: true,
-                               description: "verical sack of fluffy cotton balls with a dark bottom")
+                               description: "Verical sack of fluffy cotton balls with a dark bottom.")
         clouds.append(cloud1)
         
         let cloud2 = cloudMaker(name: "Cumulus",
                                 abbreviation: "Cu",
                                 altitudeRange: [.low],
                                 precipitationFlog: false,
-                                description: "basket of fluffy cotton balls")
+                                description: "Basket of fluffy cotton balls.")
         clouds.append(cloud2)
         
         let cloud3 = cloudMaker(name: "Stratocumulus",
                                 abbreviation: "Sc",
                                 altitudeRange: [.low],
                                 precipitationFlog: false,
-                                description: "mountain range of fluffy cotton balls")
+                                description: "Mountain range of fluffy cotton balls.")
         clouds.append(cloud3)
         
         let cloud4 = cloudMaker(name: "Stratus",
                                 abbreviation: "St",
                                 altitudeRange: [.low],
                                 precipitationFlog: false,
-                                description: "tattered smears of thin cotton gauze")
+                                description: "Tattered smears of thin cotton gauze.")
         clouds.append(cloud4)
         
         let cloud5 = cloudMaker(name: "Nimbostratus",
                                 abbreviation: "Ns",
                                 altitudeRange: [.low, .mid],
                                 precipitationFlog: true,
-                                description: "dark and stormy wall of thunder")
+                                description: "Dark and stormy wall of thunder.")
         clouds.append(cloud5)
         
         let cloud6 = cloudMaker(name: "Altocumulus",
                                 abbreviation: "Ac",
                                 altitudeRange: [.mid],
                                 precipitationFlog: false,
-                                description: "Dumplings of white fluffy cotton")
+                                description: "Dumplings of white fluffy cotton.")
         clouds.append(cloud6)
         
         let cloud7 = cloudMaker(name: "Altostratus",
                                 abbreviation: "As",
                                 altitudeRange: [.mid],
                                 precipitationFlog: false,
-                                description: "long smear of thick cotton gauze")
+                                description: "Long smear of thick cotton gauze.")
         clouds.append(cloud7)
         
         let cloud8 = cloudMaker(name: "Cirrocumulus",
                                 abbreviation: "Cc",
                                 altitudeRange: [.high],
                                 precipitationFlog: false,
-                                description: "little dots of white fluffy cotton")
+                                description: "Little dots of white fluffy cotton.")
         clouds.append(cloud8)
         
         let cloud9 = cloudMaker(name: "Cirrostratus",
                                 abbreviation: "Cs",
                                 altitudeRange: [.high],
                                 precipitationFlog: false,
-                                description: "long ribbons of thin cotton gauze")
+                                description: "Long ribbons of thin cotton gauze.")
         clouds.append(cloud9)
 
         let cloud0 = cloudMaker(name: "Cirrus",
                                 abbreviation: "Ci",
                                 altitudeRange: [.high],
                                 precipitationFlog: false,
-                                description: "ripped shreads thin cotton gauze")
+                                description: "Ripped shreads thin cotton gauze.")
         clouds.append(cloud0)
         
         return clouds

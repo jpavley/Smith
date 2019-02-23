@@ -69,7 +69,15 @@ extension ViewController {
     // MARK:- Navigation
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowDetail", sender: nil)
+        performSegue(withIdentifier: "ShowDetail", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            let controller = segue.destination as! CloudDetailViewController
+            let indexPath = sender as! IndexPath
+            controller.model = rowData(for: indexPath)
+        }
     }
 }
 
