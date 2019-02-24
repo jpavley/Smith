@@ -89,7 +89,7 @@ class Cloud {
                                 abbreviation: "Ci",
                                 altitudeRange: [.high],
                                 precipitationFlag: false,
-                                description: "Ripped shreads thin cotton gauze.")
+                                description: "Ripped shreads of thin cotton gauze.")
         clouds.append(cloud0)
         
         return clouds
