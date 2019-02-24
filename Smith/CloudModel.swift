@@ -25,70 +25,70 @@ class Cloud {
         let cloud1 = cloudMaker(name: "Cumulonibmbus",
                                abbreviation: "Cb",
                                altitudeRange: [.low, .mid, .high],
-                               precipitationFlog: true,
+                               precipitationFlag: true,
                                description: "Vertical sack of fluffy cotton balls with a dark bottom.")
         clouds.append(cloud1)
         
         let cloud2 = cloudMaker(name: "Cumulus",
                                 abbreviation: "Cu",
                                 altitudeRange: [.low],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Basket of fluffy cotton balls.")
         clouds.append(cloud2)
         
         let cloud3 = cloudMaker(name: "Stratocumulus",
                                 abbreviation: "Sc",
                                 altitudeRange: [.low],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Mountain range of fluffy cotton balls.")
         clouds.append(cloud3)
         
         let cloud4 = cloudMaker(name: "Stratus",
                                 abbreviation: "St",
                                 altitudeRange: [.low],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Tattered smears of thin cotton gauze.")
         clouds.append(cloud4)
         
         let cloud5 = cloudMaker(name: "Nimbostratus",
                                 abbreviation: "Ns",
                                 altitudeRange: [.low, .mid],
-                                precipitationFlog: true,
+                                precipitationFlag: true,
                                 description: "Dark and stormy wall of thunder.")
         clouds.append(cloud5)
         
         let cloud6 = cloudMaker(name: "Altocumulus",
                                 abbreviation: "Ac",
                                 altitudeRange: [.mid],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Dumplings of white fluffy cotton.")
         clouds.append(cloud6)
         
         let cloud7 = cloudMaker(name: "Altostratus",
                                 abbreviation: "As",
                                 altitudeRange: [.mid],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Long smear of thick cotton gauze.")
         clouds.append(cloud7)
         
         let cloud8 = cloudMaker(name: "Cirrocumulus",
                                 abbreviation: "Cc",
                                 altitudeRange: [.high],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Little dots of white fluffy cotton.")
         clouds.append(cloud8)
         
         let cloud9 = cloudMaker(name: "Cirrostratus",
                                 abbreviation: "Cs",
                                 altitudeRange: [.high],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Long ribbons of thin cotton gauze.")
         clouds.append(cloud9)
 
         let cloud0 = cloudMaker(name: "Cirrus",
                                 abbreviation: "Ci",
                                 altitudeRange: [.high],
-                                precipitationFlog: false,
+                                precipitationFlag: false,
                                 description: "Ripped shreads thin cotton gauze.")
         clouds.append(cloud0)
         
@@ -98,14 +98,14 @@ class Cloud {
     static func cloudMaker(name: String,
                            abbreviation: String,
                            altitudeRange: [CloudAltitude],
-                           precipitationFlog: Bool,
+                           precipitationFlag: Bool,
                            description: String) -> Cloud {
         
         let cloud = Cloud()
         cloud.name = name
         cloud.abbreviation = abbreviation
         cloud.altitudeRange = altitudeRange
-        cloud.precipitationFlag = precipitationFlog
+        cloud.precipitationFlag = precipitationFlag
         cloud.description = description
         return cloud
     }
