@@ -561,6 +561,15 @@ override func tableView(_ tableView: UITableView, heightForHeaderInSection secti
 }
 ````
 
+### Making Pretty
+
+Now that we've got the functionality we want we can spend time on "spit and polish". I would not go overboard with beautifying our app. It's best not to stay from what iPhone users expect and what iOS provides. That way changes will be easy to make and your app won't look so trendy that it becomes dated.
+
+Let's start with the Cloud Atlas Scene
+
+1. Select the Table View and set _Seperators_ to _None_.
+1. Set the background color to HSB 198, 25, 100. This gives us a nice bright skyblue background.
+
 Cloud Image attribution : Fir0002/Flagstaffotos
 
 
