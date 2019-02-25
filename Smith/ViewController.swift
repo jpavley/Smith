@@ -15,9 +15,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         navigationController?.navigationBar.prefersLargeTitles = true
-
     }
 }
 
@@ -67,7 +65,7 @@ extension ViewController {
     }
     
     // MARK:- Section Headers
-        
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2")
