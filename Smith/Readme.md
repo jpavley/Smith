@@ -506,29 +506,51 @@ Start with the storyboard:
 
 If you were to run the app now you won't see this new prototype cell as we have not added the code to dequeue it. You can have has many prototype cells as you need and only show then when you need to.
 
+Go to _CloudModel.swift_ and update the _CloudAlditute_ enum so it returns the strings we're going to use to popular our section headers based on the enum case.
+
+````
+enum CloudAltitude: Int {
+    
+    case low = 0, mid, high, count
+    
+    var longName: String {
+        switch self {
+        case .low:
+            return "Low-Level Clouds"
+        case .mid:
+            return "Mid-level Clouds"
+        case .high:
+            return "High-Level Clouds"
+        default:
+            return ""
+        }
+    }
+    
+    var feet: String {
+        switch self {
+        case .low:
+            return "6,500 feet"
+        case .mid:
+            return "23,000 feet"
+        case .high:
+            return "40,000 feet"
+        default:
+            return ""
+        }
+    }
+}
+````
+
 Go to _ViewController.swift_ and implement the _tableView_  methods _viewForHeaderInSection_ and _heightForHeaderInSection_ so that our app knows when to display our section headers and what data to display inside them!
 
 ````
 // MARK:- Section Headers
 
-func findAltitudeFor(section: Int) -> String {
-    switch section {
-    case 0:
-        return "Low Clouds (6,500 ft)"
-    case 1:
-        return "Medium Clouds (23,000 ft)"
-    case 2:
-        return "High Clouds (40,000 ft)"
-    default:
-        return ""
-    }
-}
-
 override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2")
-    let sectionLabel = cell?.viewWithTag(1000) as! UILabel
-    sectionLabel.text = findAltitudeFor(section: section)
+    cell?.textLabel!.text = CloudAltitude(rawValue: section)?.longName
+    cell?.detailTextLabel!.text = CloudAltitude(rawValue: section)?.feet
 
     return cell
 
