@@ -500,6 +500,8 @@ A section header for each section is a great idea. We can use the same technique
 Start with the storyboard:
 1. Select the Cloud Atlas Scene's Table View and set the _Prototype Cells_ from 1 to 2. We get a nice duplicate prototype cell below the original one!
 1. Select the new cell and change its _Identifier_ to "Cell2". Set it's _Style_ to _Right Detail_ and its _Accessory_ to _None_.
+1. Select the title label and set it's _Font Style_ to _Bold_.
+1. Select the detail label and set it's _Font_ to _System Italic_.
 1. To make sure iOS doesn't add any height to these section headers  select the Cloud Atlas Table View and set the _Sections Header Height_ to 44 and the _Sections Footer Height_ to 1 (in the Size Inspector).
 
 If you were to run the app now you won't see this new prototype cell as we have not added the code to dequeue it. You can have has many prototype cells as you need and only show then when you need to.
