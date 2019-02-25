@@ -83,6 +83,7 @@ extension ViewController {
     // MARK:- Navigation
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // print("didSelectRowAt: section \(indexPath.section), row \(indexPath.row)")
         performSegue(withIdentifier: "ShowDetail", sender: indexPath)
     }
     

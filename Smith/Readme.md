@@ -500,8 +500,7 @@ A section header for each section is a great idea. We can use the same technique
 Start with the storyboard:
 1. Select the Cloud Atlas Scene's Table View and set the _Prototype Cells_ from 1 to 2. We get a nice duplicate prototype cell below the original one!
 1. Select the new cell and change its _Identifier_ to "Cell2". Set it's _Style_ to _Right Detail_ and its _Accessory_ to _None_.
-1. Select the title label and set it's _Font Style_ to _Bold_.
-1. Select the detail label and set it's _Font_ to _System Italic_.
+1. Set _User Interaction Enabled_ for _Cell2_ to off (unchecked).
 1. To make sure iOS doesn't add any height to these section headers  select the Cloud Atlas Table View and set the _Sections Header Height_ to 44 and the _Sections Footer Height_ to 1 (in the Size Inspector).
 
 If you were to run the app now you won't see this new prototype cell as we have not added the code to dequeue it. You can have has many prototype cells as you need and only show then when you need to.
@@ -563,12 +562,22 @@ override func tableView(_ tableView: UITableView, heightForHeaderInSection secti
 
 ### Making Pretty
 
+#### Cloud Atlas Scene
+
 Now that we've got the functionality we want we can spend time on "spit and polish". I would not go overboard with beautifying our app. It's best not to stay from what iPhone users expect and what iOS provides. That way changes will be easy to make and your app won't look so trendy that it becomes dated.
 
-Let's start with the Cloud Atlas Scene
+Let's start with the Cloud Atlas Scene:
 
 1. Select the Table View and set _Seperators_ to _None_.
 1. Set the background color to HSB 198, 25, 100. This gives us a nice bright skyblue background.
+1. Set _Cell2's_ title label and set it's _Font Style_ to _Bold_ and it's color to _Maroon_.
+1. Set _Cell2's_ detail label and set it's _Font_ to _System Italic_.
+1. Set _Cell2's_ _Background_ to _No Color_
+
+Now we have a very nice background, forground, accent color scheme going on for the Cloud Atlas Scene that isn't to far from iOS standard but also not generic.
+
+#### Cloud Detail Scene
+
 
 Cloud Image attribution : Fir0002/Flagstaffotos
 

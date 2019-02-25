@@ -24,6 +24,16 @@ class CloudDetailViewController: UITableViewController {
         updateView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "Clouds2")
+        let imageView = UIImageView(image: backgroundImage)
+        tableView.backgroundView = imageView
+    }
+
+    
     func textFor(altitudeRange: [CloudAltitude]) -> String {
         var result = ""
         
@@ -49,5 +59,11 @@ class CloudDetailViewController: UITableViewController {
         descriptionTextView.text = model.description
         altitudeLabel.text = textFor(altitudeRange: model.altitudeRange)
         precipitationLabel.text = model.precipitationFlag ? "True" : "False"
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        cell.backgroundColor = backgroundColor
     }
 }
