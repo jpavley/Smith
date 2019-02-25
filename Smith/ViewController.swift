@@ -68,24 +68,24 @@ extension ViewController {
     
     // MARK:- Section Headers
     
-    func findAltitudeFor(section: Int) -> (String, String) {
-        switch section {
-        case 0:
-            return ("Low Clouds","6,500 feet")
-        case 1:
-            return ("Medium Clouds","23,000 feet")
-        case 2:
-            return ("High Clouds", "40,000 feet")
-        default:
-            return ("","")
-        }
-    }
+//    func findAltitudeFor(section: Int) -> (String, String) {
+//        switch section {
+//        case 0:
+//            return ("Low Clouds","6,500 feet")
+//        case 1:
+//            return ("Medium Clouds","23,000 feet")
+//        case 2:
+//            return ("High Clouds", "40,000 feet")
+//        default:
+//            return ("","")
+//        }
+//    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2")
-        cell?.textLabel!.text = findAltitudeFor(section: section).0
-        cell?.detailTextLabel!.text = findAltitudeFor(section: section).1
+        cell?.textLabel!.text = CloudAltitude(rawValue: section)?.longName
+        cell?.detailTextLabel!.text = CloudAltitude(rawValue: section)?.feet
 
         return cell
 

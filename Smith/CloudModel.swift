@@ -9,7 +9,34 @@
 import Foundation
 
 enum CloudAltitude: Int {
+    
     case low = 0, mid, high, count
+    
+    var longName: String {
+        switch self {
+        case .low:
+            return "Low-Level Clouds"
+        case .mid:
+            return "Mid-level Clouds"
+        case .high:
+            return "High-Level Clouds"
+        default:
+            return ""
+        }
+    }
+    
+    var feet: String {
+        switch self {
+        case .low:
+            return "6,500 feet"
+        case .mid:
+            return "23,000 feet"
+        case .high:
+            return "40,000 feet"
+        default:
+            return ""
+        }
+    }
 }
 
 class Cloud {
@@ -109,4 +136,5 @@ class Cloud {
         cloud.description = description
         return cloud
     }
+    
 }
