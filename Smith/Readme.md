@@ -576,11 +576,48 @@ Let's start with the Cloud Atlas Scene:
 
 Now we have a very nice background, forground, accent color scheme going on for the Cloud Atlas Scene that isn't to far from iOS standard but also not generic.
 
-#### Cloud Detail Scene
+#### Cloud Details Scene
 
+For the Cloud Details Scene we're going to go a little crazy and carry our color scheme forward but also add a background image--of clouds!
 
-Cloud Image attribution : Fir0002/Flagstaffotos
+Ideally there would be a different image for each type of cloud. But as this a demo app we'll just stick with one background image for all clouds. I'm not even sure if I like it. Background images create a lot of visual information for your eyes to process. But let's throw caution to the wind and give a background image a whirl.
 
+1. We need an image of some clouds for our background. I found one in Wikipedia that is available for non-commerial reuse if I include this attribution: "Fir0002/Flagstaffotos."
+1. Cropped a part of the image to fit the aspect ratio of an an average iPhone and drag it in to Assets.xcassets. Name it "Clouds2" or whatever you want to call it.
+1. Select the _Navigation Controller Scene's_ _Navigation Bar_ and set the _Tint_ to the color _Maroon_. This paints the back button in our accent color.
+1. Select the _Cloud Details Scene_ _Table View_ and set the the _Tint_ to the color _Maroon_. (I think there is a place to globally set the _Tint_ and if I find it, I will update this README.)
+1. For each _Table View Section's_ _Table View Cell_ set the _Background_ to _No Color_.
+1. Select each label on the left side of each cell and set it's _Color_ to _Maroon_.
+1. Select both labels in each cell set their _Background_ to _Clear Color_.
+1. Don't forget to set the _Background_ of the _Text View_ to _Clear Color_ as well!
+
+Our storyboard is in good shape. Let's update _CloudDetailViewController.swift_ with the code required to finish our prettification efforts!
+
+````
+override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    let backgroundImage = UIImage(named: "Clouds2")
+    let imageView = UIImageView(image: backgroundImage)
+    tableView.backgroundView = imageView
+}
+````
+
+By overrriding _viewWillAppear_ we can set the _Clouds2_ image to be the _UIImageView_ of the table view's background.
+
+````
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        cell.backgroundColor = backgroundColor
+    }
+````
+
+By overriding the _tableView willDisplay_ display method we can change the background color of each cell to be slightly transparent so that the background image will show through each row.
+
+And we're done for now! I'm not sure I like the results of our spit and polish efforts: The Cloud Atlas Scene is still a little bland and the Cloud Details Scene is a little too fancy. But it's best to let users decide these kinds of issues. They might love it (or not care enough to hate it)! And the sooner we get our apps in the hands of actual users the soon we'll find out for sure.
+
+Down the road I want to write a sequel where we get our cloud data from an web server. We can write the server in Ruby, Node, or even Swift. We'll figure that out when we get there!
 
 
 

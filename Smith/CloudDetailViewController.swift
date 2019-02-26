@@ -27,7 +27,6 @@ class CloudDetailViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Add a background view to the table view
         let backgroundImage = UIImage(named: "Clouds2")
         let imageView = UIImageView(image: backgroundImage)
         tableView.backgroundView = imageView
