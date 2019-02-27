@@ -65,6 +65,7 @@
 		B813C76D2217938600A4CBA9 = {
 			isa = PBXGroup;
 			children = (
+				B8168883222424C300ED4533 /* Readme.md */,
 				B813C7782217938600A4CBA9 /* Smith */,
 				B813C78D2217938800A4CBA9 /* SmithTests */,
 				B813C7772217938600A4CBA9 /* Products */,
@@ -83,7 +84,6 @@
 		B813C7782217938600A4CBA9 /* Smith */ = {
 			isa = PBXGroup;
 			children = (
-				B8168883222424C300ED4533 /* Readme.md */,
 				B813C7792217938600A4CBA9 /* AppDelegate.swift */,
 				B813C77B2217938600A4CBA9 /* ViewController.swift */,
 				B813C77D2217938600A4CBA9 /* Main.storyboard */,
