@@ -5,30 +5,41 @@
 The UITableViewController object includes a controller for managing the table and a view for presenting the table. Tables are really lists of rows. Rows contains cells and cells contains views that display text, images, and anything else you can render on an iPhone screen. 
 
 There are two styles of row presentation (plain and grouped) and two types of data sources (dynamic and static).
+
 - _Grouped_ tables organize rows into visually separated sections.
 - _Plain_ tables have all rows in a single contiguous section.
 - _Static_ tables get their row data from the storyboard. (Although you can work around this limitation.)
 - _Dynamic_ tables get their row data from an object at runtime.
 
-Sections are numbered from 0 to n, where n is the count of sections - 1. Rows are numbers from 0 to n, where n is the count of rows - 1. This means that it's easy to model the data for a table view as a two-dimensional array. Here's how to declare a 2D array of integers: 
+Sections are numbered from 0 to n, where n is the count of sections - 1. Rows are numbers from 0 to n, where n is the count of rows - 1. This means that it's easy to model the data for a table view as a two-dimensional array. Here's how to declare a 2D array of integers:
 
-```let arr = [[1,2,3],[4,5,6],[7,8,9]]```
+```swift
+let arr = [[1,2,3],[4,5,6],[7,8,9]]
+```
 
 The value for the 2nd row in the 1st section is found with:
 
-```arr[0][1] // returns 2```
+```swift
+arr[0][1] // returns 2
+```
 
 The number of sections is found with:
 
-```arr.count // returns 3```
+```swift
+arr.count // returns 3
+```
 
 The number of rows in the 3rd sections is found with:
 
-```arr[2].count```
+```swift
+arr[2].count
+```
 
 In order to render data for the table the controller ask you through methods you have to override to supply the number sections, rows in each section, and a cell for a particular section/row. The key data structure to a table view controller uses to identify sections/rows values is the IndexPath.
 
-```let indexPath = IndexPath(row: 1, section: 0)```
+```swift
+let indexPath = IndexPath(row: 1, section: 0)
+```
 
 A UITableView is memory efficient and fast. You're not going to easily reproduce it's economical footprint and performance so you should use UITableViews as much as possible. To keep memory constrained UITableViewCells are recycled using a pattern called dequeuing. Reusable cells are prototyped on a storyboard (or programmatically in code) and associated with an ID so that you can use multiple cell prototypes as templates.
 
@@ -73,42 +84,42 @@ The following steps include all the code for bringing your table to life. All co
 
 1. Add the _model_ property to the _ViewController_ class
 
-````
+```swift
 import UIKit
 
-class ViewController: UITableViewController {
+    class ViewController: UITableViewController {
 
-let model = [["cat","dog","cow"], ["village", "city", "town"], ["sun", "moon", "star"]]
+        let model = [["cat","dog","cow"], ["village", "city", "town"], ["sun", "moon", "star"]]
 
-override func viewDidLoad() {
-super.viewDidLoad()
-// Do any additional setup after loading the view, typically from a nib.
+        override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
 }
-}
-````
+```
 
 1. Create an extension to the _ViewController_ class and override the _numberOfSections_, numberOfRowsInSection_, and _cellForRowAt_ data sources methods of _UITableViewController_
 
-````
+```swift
 extension ViewController {
 
-// MARK:- Table View Data Source
+    // MARK:- Table View Data Source
 
-override func numberOfSections(in tableView: UITableView) -> Int {
-return model.count
-}
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return model.count
+    }
 
-override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-return model[section].count
-}
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model[section].count
+    }
 
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath)
-cell.textLabel!.text = model[indexPath.section][indexPath.row]
-return cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath)
+        cell.textLabel!.text = model[indexPath.section][indexPath.row]
+        return cell
+    }
 }
-}
-````
+```
 
 ### Test Run
 
@@ -132,126 +143,124 @@ For your model lets say we're collecting clouds. There are many kinds of clouds,
 
 Create a new swift file to contain the Cloud class:
 
-````
+```swift
 import Foundation
 
 enum CloudAltitude: Int {
-case low = 0, mid, high, count
+    case low = 0, mid, high, count
 }
 
 class Cloud {
-var name = ""
-var abbreviation = ""
-var altitudeRange = [CloudAltitude]()
-var precipitationFlag = false
-var description = ""
+    var name = ""
+    var abbreviation = ""
+    var altitudeRange = [CloudAltitude]()
+    var precipitationFlag = false
+    var description = ""
 }
-````
+```
 
 Add a cloud factory to the _Cloud_ class:
 
-````
+```swift
 static func cloudMaker(name: String,
-abbreviation: String,
-altitudeRange: [CloudAltitude],
-precipitationFlog: Bool,
-description: String) -> Cloud {
+            abbreviation: String,
+            altitudeRange: [CloudAltitude],
+            precipitationFlog: Bool,
+            description: String) -> Cloud {
 
-let cloud = Cloud()
-cloud.name = name
-cloud.abbreviation = abbreviation
-cloud.altitudeRange = altitudeRange
-cloud.precipitationFlag = precipitationFlog
-cloud.description = description
-return cloud
+    let cloud = Cloud()
+    cloud.name = name
+    cloud.abbreviation = abbreviation
+    cloud.altitudeRange = altitudeRange
+    cloud.precipitationFlag = precipitationFlog
+    cloud.description = description
+    return cloud
 }
-````
+```
 
 Now it's time to enter in all the sample data for our cloud collection:
 
-````
+```swift
 static func sampleData() -> [Cloud] {
-var clouds = [Cloud]()
+    let cloud1 = cloudMaker(name: "Cumulonibmbus",
+    abbreviation: "Cb",
+    altitudeRange: [.low, .mid, .high],
+    precipitationFlog: true,
+    description: "vertical sack of fluffy cotton balls with a dark bottom")
+    clouds.append(cloud1)
 
-let cloud1 = cloudMaker(name: "Cumulonibmbus",
-abbreviation: "Cb",
-altitudeRange: [.low, .mid, .high],
-precipitationFlog: true,
-description: "vertical sack of fluffy cotton balls with a dark bottom")
-clouds.append(cloud1)
+    let cloud2 = cloudMaker(name: "Cumulus",
+    abbreviation: "Cu",
+    altitudeRange: [.low],
+    precipitationFlog: false,
+    description: "basket of fluffy cotton balls")
+    clouds.append(cloud2)
 
-let cloud2 = cloudMaker(name: "Cumulus",
-abbreviation: "Cu",
-altitudeRange: [.low],
-precipitationFlog: false,
-description: "basket of fluffy cotton balls")
-clouds.append(cloud2)
+    let cloud3 = cloudMaker(name: "Stratocumulus",
+    abbreviation: "Sc",
+    altitudeRange: [.low],
+    precipitationFlog: false,
+    description: "mountain range of fluffy cotton balls")
+    clouds.append(cloud3)
 
-let cloud3 = cloudMaker(name: "Stratocumulus",
-abbreviation: "Sc",
-altitudeRange: [.low],
-precipitationFlog: false,
-description: "mountain range of fluffy cotton balls")
-clouds.append(cloud3)
+    let cloud4 = cloudMaker(name: "Stratus",
+    abbreviation: "St",
+    altitudeRange: [.low],
+    precipitationFlog: false,
+    description: "tattered smears of thin cotton gauze")
+    clouds.append(cloud4)
 
-let cloud4 = cloudMaker(name: "Stratus",
-abbreviation: "St",
-altitudeRange: [.low],
-precipitationFlog: false,
-description: "tattered smears of thin cotton gauze")
-clouds.append(cloud4)
+    let cloud5 = cloudMaker(name: "Nimbostratus",
+    abbreviation: "Ns",
+    altitudeRange: [.low, .mid],
+    precipitationFlog: true,
+    description: "dark and stormy wall of thunder")
+    clouds.append(cloud5)
 
-let cloud5 = cloudMaker(name: "Nimbostratus",
-abbreviation: "Ns",
-altitudeRange: [.low, .mid],
-precipitationFlog: true,
-description: "dark and stormy wall of thunder")
-clouds.append(cloud5)
+    let cloud6 = cloudMaker(name: "Altocumulus",
+    abbreviation: "Ac",
+    altitudeRange: [.mid],
+    precipitationFlog: false,
+    description: "Dumplings of white fluffy cotton")
+    clouds.append(cloud6)
 
-let cloud6 = cloudMaker(name: "Altocumulus",
-abbreviation: "Ac",
-altitudeRange: [.mid],
-precipitationFlog: false,
-description: "Dumplings of white fluffy cotton")
-clouds.append(cloud6)
+    let cloud7 = cloudMaker(name: "Altostratus",
+    abbreviation: "As",
+    altitudeRange: [.mid],
+    precipitationFlog: false,
+    description: "long smear of thick cotton gauze")
+    clouds.append(cloud7)
 
-let cloud7 = cloudMaker(name: "Altostratus",
-abbreviation: "As",
-altitudeRange: [.mid],
-precipitationFlog: false,
-description: "long smear of thick cotton gauze")
-clouds.append(cloud7)
+    let cloud8 = cloudMaker(name: "Cirrocumulus",
+    abbreviation: "Cc",
+    altitudeRange: [.high],
+    precipitationFlog: false,
+    description: "little dots of white fluffy cotton")
+    clouds.append(cloud8)
 
-let cloud8 = cloudMaker(name: "Cirrocumulus",
-abbreviation: "Cc",
-altitudeRange: [.high],
-precipitationFlog: false,
-description: "little dots of white fluffy cotton")
-clouds.append(cloud8)
+    let cloud9 = cloudMaker(name: "Cirrostratus",
+    abbreviation: "Cs",
+    altitudeRange: [.high],
+    precipitationFlog: false,
+    description: "long ribbons of thin cotton gauze")
+    clouds.append(cloud9)
 
-let cloud9 = cloudMaker(name: "Cirrostratus",
-abbreviation: "Cs",
-altitudeRange: [.high],
-precipitationFlog: false,
-description: "long ribbons of thin cotton gauze")
-clouds.append(cloud9)
+    let cloud0 = cloudMaker(name: "Cirrus",
+    abbreviation: "Ci",
+    altitudeRange: [.high],
+    precipitationFlog: false,
+    description: "ripped shreds thin cotton gauze")
+    clouds.append(cloud0)
 
-let cloud0 = cloudMaker(name: "Cirrus",
-abbreviation: "Ci",
-altitudeRange: [.high],
-precipitationFlog: false,
-description: "ripped shreds thin cotton gauze")
-clouds.append(cloud0)
-
-return clouds
+    return clouds
 }
-````
+```
 
 ### Refactoring the Main View Controller
 
 I know, it's a lot of typing, but it's worth it! Now we have a far more interesting model to work with. Let's update the _ViewController_ class to work with the cloud data.
 
-````
+```swift
 import UIKit
 
 class ViewController: UITableViewController {
@@ -259,57 +268,57 @@ class ViewController: UITableViewController {
 let model = Cloud.sampleData()
 
 override func viewDidLoad() {
-super.viewDidLoad()
-// Do any additional setup after loading the view, typically from a nib.
-}
+    super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
 }
 
 extension ViewController {
 
-// MARK:- Helpers
+    // MARK:- Helpers
 
-fileprivate func sectionData(for section: Int) -> [Cloud]? {
-if let altitude = CloudAltitude(rawValue: section) {
-return model.filter {$0.altitudeRange.contains(altitude)}
-} else {
-return nil
+    fileprivate func sectionData(for section: Int) -> [Cloud]? {
+        if let altitude = CloudAltitude(rawValue: section) {
+            return model.filter {$0.altitudeRange.contains(altitude)}
+        } else {
+            return nil
+        }
+    }
+
+    fileprivate func rowData(for indexPath: IndexPath) -> Cloud? {
+    if let cloudData = sectionData(for: indexPath.section) {
+            return cloudData[indexPath.row]
+        } else {
+            return nil
+        }
+    }
+
+    // MARK:- Table View Data Source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+
+        // We will have a section for each altitude (low, medium, and high)
+        // Some clouds will appear more than once if they appear at multiple altitudes!
+
+        return CloudAltitude.count.rawValue
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let cloudData = sectionData(for: section)
+        return cloudData?.count ?? 0
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath)
+
+        if let cloud = rowData(for: indexPath) {
+            cell.textLabel!.text = cloud.name
+        }
+
+        return cell
+    }
 }
-}
-
-fileprivate func rowData(for indexPath: IndexPath) -> Cloud? {
-if let cloudData = sectionData(for: indexPath.section) {
-return cloudData[indexPath.row]
-} else {
-return nil
-}
-}
-
-// MARK:- Table View Data Source
-
-override func numberOfSections(in tableView: UITableView) -> Int {
-
-// We will have a section for each altitude (low, medium, and high)
-// Some clouds will appear more than once if they appear at multiple altitudes!
-
-return CloudAltitude.count.rawValue
-}
-
-override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-let cloudData = sectionData(for: section)
-return cloudData?.count ?? 0
-}
-
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath)
-
-if let cloud = rowData(for: indexPath) {
-cell.textLabel!.text = cloud.name
-}
-
-return cell
-}
-}
-````
+```
 
 The array of Cloud objects is a bit more complicated than our previous model (a simple nested array of Ints). But with complexity comes a better user experience! We're mapping sections IDs (0, 1, 2) to altitude values using the raw values of the the enum _CloudAltitude_. The last case of _CloudAltitude_ (.last) is not an altitude but a trick to get the count of cases--which is the number of sections!
 
@@ -333,14 +342,14 @@ Run the app and tell me what you see... not much new but we've created a view co
 
 Select the _View Controller's_ _Navigation Item_ and set its _Title_ property to "Cloud Atlas." In modern iOS apps the title of a view controller should be huge! But we need to set this property in code as we only want the main view controller (Cloud Atlas) to have a huge title. Secondary view controllers should have regular-sized titles according to Apple.
 
-````
+```swift
 override func viewDidLoad() {
-super.viewDidLoad()
-// Do any additional setup after loading the view, typically from a nib.
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
 
-navigationController?.navigationBar.prefersLargeTitles = true
+    navigationController?.navigationBar.prefersLargeTitles = true
 }
-````
+```
 
 ### Segue Between View Controllers
 
@@ -349,13 +358,13 @@ navigationController?.navigationBar.prefersLargeTitles = true
 
 If you run the app at this point a tap on a row--nothing will happen! The segue needs to be trigger manually! Add the code below to the ViewController.swift to execute the segue.
 
-````
+```swift
 // MARK:- Navigation
 
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-performSegue(withIdentifier: "ShowDetail", sender: nil)
+    performSegue(withIdentifier: "ShowDetail", sender: nil)
 }
-````
+```
 
 Now you can verify that the segue is working by running the app and tapping a row. As a free feature from the navigation controller (that our table view controllers are sitting inside) we get a back button that enables the user to return to the Cloud Atlas view controller. But our detail view controller has no details.
 
@@ -384,18 +393,18 @@ First we need a class associated with the _Cloud Detail_ view controller to cust
 1. Create a new _Cocoa Touch_ class named "CloudDetailViewController" and base it on "UITableViewController".
 1. Delete all the code that comes with this class (most of it is commented out) and replace it with the following much more simpler code:
 
-````
+```swift
 import UIKit
 
 class CloudDetailViewController: UITableViewController {
 
-override func viewDidLoad() {
-super.viewDidLoad()
-navigationItem.largeTitleDisplayMode = .never
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
+    }
+}
+```
 
-}
-}
-````
 Right now the only behavior we've added is to display a not-huge title with this view controller loads so we conform to Apple's Human Interface Guidelines.
 
 Go to the storyboard and select the _Cloud Detail Scene_. Set its custom class to "CloudDetailViewController" in the _Identity Inspector_. This associates our new class with our new view controller.
@@ -404,37 +413,37 @@ Go to the storyboard and select the _Cloud Detail Scene_. Set its custom class t
 
 We need to create properties in the _CloudDetailViewController_ that refers to the labels and text view on the _Cloud Detail Scene_ so that we can stuff the data for the selected cloud type into them. Add the following IBOutlets to _CloudDetailViewController.swift_:
 
-````
+```swift
 @IBOutlet weak var nameLabel: UILabel!
 @IBOutlet weak var abbreviationLabel: UILabel!
 @IBOutlet weak var altitudeLabel: UILabel!
 @IBOutlet weak var precipitationLabel: UILabel!
 @IBOutlet weak var descriptionTextView: UITextView!
-````
+```
 
 Next do the control drag thing between the circle next to each IBOutlet and the labels and text view on the storyboard. There are several ways to do this. My favorite is to control-drag from the yellow circle (that represents  a view controller's class) down to each storyboard object and select the corresponding outlet from the pop-up menu that appears.
 
 ### Populating the Data
 
-Now that we have the storyboard outlets connected to the _DetailViewController_ class we can finishing our project and display the details for any cloud tapped! 
+Now that we have the storyboard outlets connected to the _DetailViewController_ class we can finishing our project and display the details for any cloud tapped!
 
 We need to transfer the data for a particular cloud from the _CloudAtlasViewController_ to the _DetailViewController_ and then we need to use that data to populate the labels and text view.
 
 Let's start with the _CloudAtlasViewController_. Update the navigation code
 
-````
+```swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-performSegue(withIdentifier: "ShowDetail", sender: indexPath)
+    performSegue(withIdentifier: "ShowDetail", sender: indexPath)
 }
 
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-if segue.identifier == "ShowDetail" {
-let controller = segue.destination as! CloudDetailViewController
-let indexPath = sender as! IndexPath
-controller.model = rowData(for: indexPath)
+    if segue.identifier == "ShowDetail" {
+        let controller = segue.destination as! CloudDetailViewController
+        let indexPath = sender as! IndexPath
+        controller.model = rowData(for: indexPath)
+    }
 }
-}
-````
+```
 
 Remember that when we tapped on a row we used the _tableView(didSelectRowAt:) method to call the _prepare(withIdentifier:sender)_ method. Here we are overriding the prepare with the segue we want to call and passing the IndexPath of that represents the section and row tapped. We set the _model_ variable of the destination of this segue to the cloud that has been chosen.
 
@@ -442,46 +451,46 @@ Almost done!
 
 _CloudDetailViewController_ needs a variable called model to hold the data from _CloudAtlasViewController_:
 
-````
+```swift
 var model: Cloud!
-````
+```
 
 And _CloudDetailViewController_ needs to update it's views when it loads:
 
-````
+```swift
 override func viewDidLoad() {
-super.viewDidLoad()
-navigationItem.largeTitleDisplayMode = .never
-updateView()
+    super.viewDidLoad()
+    navigationItem.largeTitleDisplayMode = .never
+    updateView()
 }
 
 func textFor(altitudeRange: [CloudAltitude]) -> String {
-var result = ""
+    var result = ""
 
-for altitude in altitudeRange {
-switch altitude {
-case .low:
-result += "Low "
-case .mid:
-result += "Mid "
-case .high:
-result += "High "
-case .count:
-result += "Count "
-}
-}
+    for altitude in altitudeRange {
+        switch altitude {
+        case .low:
+            result += "Low "
+        case .mid:
+            result += "Mid "
+        case .high:
+            result += "High "
+        case .count:
+            result += "Count "
+        }
+    }
 
-return result
+    return result
 }
 
 func updateView() {
-nameLabel.text = model.name
-abbreviationLabel.text = model.abbreviation
-descriptionTextView.text = model.description
-altitudeLabel.text = textFor(altitudeRange: model.altitudeRange)
-precipitationLabel.text = model.precipitationFlag ? "True" : "False"
+    nameLabel.text = model.name
+    abbreviationLabel.text = model.abbreviation
+    descriptionTextView.text = model.description
+    altitudeLabel.text = textFor(altitudeRange: model.altitudeRange)
+    precipitationLabel.text = model.precipitationFlag ? "True" : "False"
 }
-````
+```
 
 We have to convert the _Enum_ cases of altitudeRange into a string and convert the _Boolean_ value of precipitationFlag to either true or false. Run the app and I bet you agree with me that we're basically done. And yet... the app is kinda of blah. 
 
@@ -498,6 +507,7 @@ We have three sections of clouds but no idea how they are grouped! Is the first 
 A section header for each section is a great idea. We can use the same technique of prototype cell on the storyboard and dequeueReusableCell in the code to add a header to each section.
 
 Start with the storyboard:
+
 1. Select the Cloud Atlas Scene's Table View and set the _Prototype Cells_ from 1 to 2. We get a nice duplicate prototype cell below the original one!
 1. Select the new cell and change its _Identifier_ to "Cell2". Set it's _Style_ to _Right Detail_ and its _Accessory_ to _None_.
 1. Set _User Interaction Enabled_ for _Cell2_ to off (unchecked).
@@ -507,58 +517,58 @@ If you were to run the app now you won't see this new prototype cell as we have 
 
 Go to _CloudModel.swift_ and update the _CloudAltitute_ enum so it returns the strings we're going to use to popular our section headers based on the enum case.
 
-````
+```swift
 enum CloudAltitude: Int {
 
 case low = 0, mid, high, count
 
 var longName: String {
-switch self {
-case .low:
-return "Low-Level Clouds"
-case .mid:
-return "Mid-level Clouds"
-case .high:
-return "High-Level Clouds"
-default:
-return ""
-}
+    switch self {
+        case .low:
+            return "Low-Level Clouds"
+        case .mid:
+            return "Mid-level Clouds"
+        case .high:
+            return "High-Level Clouds"
+        default:
+            return ""
+    }
 }
 
 var feet: String {
-switch self {
-case .low:
-return "6,500 feet"
-case .mid:
-return "23,000 feet"
-case .high:
-return "40,000 feet"
-default:
-return ""
+    switch self {
+        case .low:
+            return "6,500 feet"
+        case .mid:
+            return "23,000 feet"
+        case .high:
+            return "40,000 feet"
+        default:
+            return ""
+        }
+    }
 }
-}
-}
-````
+```
 
 Go to _ViewController.swift_ and implement the _tableView_  methods _viewForHeaderInSection_ and _heightForHeaderInSection_ so that our app knows when to display our section headers and what data to display inside them!
 
-````
+```swift
 // MARK:- Section Headers
 
 override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2")
-cell?.textLabel!.text = CloudAltitude(rawValue: section)?.longName
-cell?.detailTextLabel!.text = CloudAltitude(rawValue: section)?.feet
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2")
+    cell?.textLabel!.text = CloudAltitude(rawValue: section)?.longName
+    cell?.detailTextLabel!.text = CloudAltitude(rawValue: section)?.feet
 
-return cell
+    return cell
 
 }
 
 override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-return 44
+    return 44
 }
-````
+```
 
 ### Making Pretty
 
@@ -593,42 +603,28 @@ Ideally there would be a different image for each type of cloud. But as this a d
 
 Our storyboard is in good shape. Let's update _CloudDetailViewController.swift_ with the code required to finish our prettification efforts!
 
-````
+```swift
 override func viewWillAppear(_ animated: Bool) {
-super.viewWillAppear(animated)
+    super.viewWillAppear(animated)
 
-let backgroundImage = UIImage(named: "Clouds2")
-let imageView = UIImageView(image: backgroundImage)
-tableView.backgroundView = imageView
+    let backgroundImage = UIImage(named: "Clouds2")
+    let imageView = UIImageView(image: backgroundImage)
+    tableView.backgroundView = imageView
 }
-````
+```
 
 By overriding _viewWillAppear_ we can set the _Clouds2_ image to be the _UIImageView_ of the table view's background.
 
-````
+```swift
 override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-let backgroundColor = UIColor.white.withAlphaComponent(0.8)
-cell.backgroundColor = backgroundColor
+    let backgroundColor = UIColor.white.withAlphaComponent(0.8)
+    cell.backgroundColor = backgroundColor
 }
-````
+```
 
 By overriding the _tableView willDisplay_ display method we can change the background color of each cell to be slightly transparent so that the background image will show through each row.
 
 And we're done for now! I'm not sure I like the results of our spit and polish efforts: The Cloud Atlas Scene is still a little bland and the Cloud Details Scene is a little too fancy. But it's best to let users decide these kinds of issues. They might love it (or not care enough to hate it)! And the sooner we get our apps in the hands of actual users the soon we'll find out for sure.
 
 Down the road I want to write a sequel where we get our cloud data from a web server. We can write the server in Ruby, Node, or even Swift. We'll figure that out when we get there!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
